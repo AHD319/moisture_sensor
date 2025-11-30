@@ -1,0 +1,27 @@
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setwarnings(False) # some warnings occur because of saftey concerns this disables it
+
+green_led_pin = 21
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(green_led_pin, GPIO.OUT)
+
+red_led_pin = 16
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(red_led_pin, GPIO.OUT)
+
+MOISTURE_PIN = 17  # setting moisture sensor as gpio pin 17
+GPIO.setmode(GPIO.BCM)# using the broadcom chip pin
+GPIO.setup(MOISTURE_PIN, GPIO.IN) #sensor itself reads high when its dry and low when its wet (gpio.in means it records input)
+
+while True:
+    if GPIO.input(MOISTURE_PIN): #here the if statement checks if the gpio pin for moisture sensor is high if it is print dry
+        print("soil is dry")
+        GPIO.OUTPUT(green_led_pin, GPIO.LOW)
+        GPIO.OUTPUT(red_led_pin, GPIO.HIGH)
+    else: #if not high the gpio must be low so print wet
+        print("soil is wet")
+        GPIO.OUTPUT(red_led_pin, GPIO.LOW)
+        GPIO.OUTPUT(green_led_pin, GPIO.HIGH)
+    time.sleep(1)
