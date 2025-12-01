@@ -3,11 +3,11 @@ import time
 
 GPIO.setwarnings(False) # some warnings occur because of saftey concerns this disables it
 
-green_led_pin = 21
+green_led_pin = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(green_led_pin, GPIO.OUT)
 
-red_led_pin = 16
+red_led_pin = 12
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(red_led_pin, GPIO.OUT)
 
@@ -24,14 +24,14 @@ while True:
         # each time the if statement is true 1 second is added to dry time
         dry_time = dry_time + 1
         print(f"The has been dry for {dry_time} seconds")
-        GPIO.OUTPUT(green_led_pin, GPIO.LOW)
-        GPIO.OUTPUT(red_led_pin, GPIO.HIGH)
+        GPIO.output(green_led_pin, GPIO.LOW)
+        GPIO.output(red_led_pin, GPIO.HIGH)
     else: #if not high the gpio must be low so print wet
         # if the soil is wet the dry time is 0
         dry_time = 0
         # every loop the if statement is true one second is added to wet time
-        wet+time = wet_time + 1
-        print("The soil has been wet for {wet_time} seconds")
-        GPIO.OUTPUT(red_led_pin, GPIO.LOW)
-        GPIO.OUTPUT(green_led_pin, GPIO.HIGH)
+        wet_time = wet_time + 1
+        print(f"The soil has been wet for {wet_time} seconds")
+        GPIO.output(red_led_pin, GPIO.LOW)
+        GPIO.output(green_led_pin, GPIO.HIGH)
     time.sleep(1)
