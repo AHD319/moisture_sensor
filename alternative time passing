@@ -1,0 +1,6 @@
+import time
+time_score = 0
+while True:
+    time_score = time_score + 1
+    print(time_score)
+    time.sleep(1)
