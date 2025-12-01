@@ -1,0 +1,13 @@
+import time
+
+start_time = time.time() # time running since january 1st 1970
+# time.time() is a dynamic function which changes each time called
+while True:
+    # marks time again but the current time changes in the loop
+    current_time = time.time()
+    # the time passed would be the time in the present - the time from the begining
+    time_passed = current_time - start_time
+    #printing time passed and rounding with round function because there is microseconda accounted. 
+    print(f"time passed by {round(time_passed)}")
+    # delay so that it doesnt print too much
+    time.sleep(1)
